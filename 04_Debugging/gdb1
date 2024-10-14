@@ -1,0 +1,8 @@
+start 1 12 >/dev/null
+
+break 27 if (i % 5) == 0
+commands
+  printf "@%lld %lld %lld %lld\n", from, to, step, i
+  continue
+end
+continue

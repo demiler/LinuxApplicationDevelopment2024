@@ -1,0 +1,15 @@
+start -100 100 3 >/dev/null
+
+break 27
+
+continue 28
+
+set $x=28
+while ($x <= 35)
+  set $x=$x+1
+  printf "@%lld %lld %lld %lld\n", from, to, step, i
+  continue
+end
+delete 2
+
+continue
