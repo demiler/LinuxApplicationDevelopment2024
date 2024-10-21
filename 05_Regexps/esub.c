@@ -8,6 +8,10 @@
 #define MAX_ERROR_BUFFER 1024u
 #define REFERENCE_REGEX "\\\\[1-9]"
 
+int getCaptureGroupId(const char* sub, regmatch_t match) {
+    return sub[match.rm_eo - 1] - 48; // char to int from 0 to 9
+}
+
 int main(int argc, const char *argv[]) {
     if (argc != 4) {
         printf("Usage: %s <pattern> <substitution> <string>\n", argv[0]);
@@ -37,36 +41,50 @@ int main(int argc, const char *argv[]) {
     else {
         const size_t inlen = strlen(string);
         const size_t sublen = strlen(sub);
-        const size_t max_size = sublen + inlen + strlen(argv[1]);
-        char* const out = (char* const)malloc(max_size + 1);
         const char* const substart = sub;
 
-        //printf("%d %d\n", capgroups[0].rm_so, capgroups[0].rm_eo);
-        strncpy(out, string, capgroups[0].rm_so);
-        char* outptr = out + capgroups[0].rm_so;
-        *outptr = 0;
-
         int success = 1;
+        size_t max_size = inlen + sublen;
         while (regexec(&reference, sub, 1, refpos, 0) != REG_NOMATCH) {
-            int capgrpid = sub[refpos->rm_eo - 1] - 48; // char to int from 0 to 9
+            int capgrpid = getCaptureGroupId(sub, *refpos);
             regmatch_t capgrp = capgroups[capgrpid];
             if (capgrp.rm_so == -1) {
                 printf("Error: capture group %d wasn't found!\n", capgrpid);
                 success = 0;
                 break;
             }
-            //printf("%d %d %d\n", refpos->rm_so, refpos->rm_eo, capgrpid);
-
-            size_t caplen = capgrp.rm_eo - capgrp.rm_so;
-            strncpy(outptr, sub, refpos->rm_so);
-            outptr += refpos->rm_so;
-            strncpy(outptr, string + capgrp.rm_so, caplen);
-            outptr += caplen;
-            *outptr = 0;
+            size_t capgrplen = capgrp.rm_eo - capgrp.rm_so;
+            max_size += capgrplen;
             sub += refpos->rm_eo;
         }
+        sub = substart;
 
         if (success) {
+            char* const out = (char* const)malloc(max_size + 1);
+
+            //printf("%d %d\n", capgroups[0].rm_so, capgroups[0].rm_eo);
+            strncpy(out, string, capgroups[0].rm_so);
+            char* outptr = out + capgroups[0].rm_so;
+            *outptr = 0;
+
+            while (regexec(&reference, sub, 1, refpos, 0) != REG_NOMATCH) {
+                int capgrpid = getCaptureGroupId(sub, *refpos);
+                regmatch_t capgrp = capgroups[capgrpid];
+                if (capgrp.rm_so == -1) {
+                    printf("Error: capture group %d wasn't found!\n", capgrpid);
+                    break;
+                }
+                //printf("%d %d %d\n", refpos->rm_so, refpos->rm_eo, capgrpid);
+
+                size_t caplen = capgrp.rm_eo - capgrp.rm_so;
+                strncpy(outptr, sub, refpos->rm_so);
+                outptr += refpos->rm_so;
+                strncpy(outptr, string + capgrp.rm_so, caplen);
+                outptr += caplen;
+                *outptr = 0;
+                sub += refpos->rm_eo;
+            }
+
             if (sub) {
                 size_t subtaillen = sublen - (sub - substart);
                 strncpy(outptr, sub, subtaillen);
@@ -79,8 +97,8 @@ int main(int argc, const char *argv[]) {
             *(outptr + taillen) = 0;
 
             printf("%s\n", out);
+            free(out);
         }
-        free(out);
     }
 
     regfree(&reference);
