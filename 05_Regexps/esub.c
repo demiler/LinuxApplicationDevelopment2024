@@ -15,7 +15,7 @@ int getCaptureGroupId(const char* sub, regmatch_t match) {
 int main(int argc, const char *argv[]) {
     if (argc != 4) {
         printf("Usage: %s <pattern> <substitution> <string>\n", argv[0]);
-        return 1;
+        return 0;
     }
 
     regex_t pattern, reference;
@@ -24,8 +24,8 @@ int main(int argc, const char *argv[]) {
     if (compfail) {
         char errormsg[MAX_ERROR_BUFFER];
         regerror(compfail, &pattern, errormsg, MAX_ERROR_BUFFER);
-        printf("Error: failed to compile regex. Reason: %s", errormsg);
-        return 2;
+        printf("Error: failed to compile regex. Reason: %s\n", errormsg);
+        return 0;
     }
     regcomp(&reference, REFERENCE_REGEX, 0);
 
