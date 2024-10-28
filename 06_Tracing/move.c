@@ -13,10 +13,15 @@
 #define ERR_OUTPERM 5
 #define ERR_OUTUNL 6
 #define ERR_INUNL 7
+#define ERR_SAMEFILE 8
 
 int fatal(const char* msg, int exit_code) {
     int error = errno;
-    printf("Error: %s. Reason: %s\n", msg, strerror(error));
+    printf("Error: %s", msg);
+    if (error) {
+        printf(" Reason: %s", strerror(error));
+    }
+    printf("\n");
     return exit_code;
 }
 
@@ -38,6 +43,10 @@ int main(int argc, char *argv[]) {
     }
     const char* infile = argv[1];
     const char* outfile = argv[2];
+
+    if (strcmp(infile, outfile) == 0) {
+        return fatal("Can't move file to itself", ERR_SAMEFILE);
+    }
 
     int in_fd = open(infile, O_RDONLY);
 
@@ -65,12 +74,14 @@ int main(int argc, char *argv[]) {
     if (fchmod(out_fd, perms.st_mode)) {
         close(in_fd);
         close(out_fd);
+        unlink(outfile);
         return fatal("Failed to change output file permissions", ERR_OUTPERM);
     }
 
     if (copy(in_fd, out_fd)) {
         close(in_fd);
         close(out_fd);
+        unlink(outfile);
         return fatal("Fatal error: couldn't write whole buffer", ERR_BUWR);
     }
     close(in_fd);
