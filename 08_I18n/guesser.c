@@ -8,8 +8,10 @@
 
 int main() {
     setlocale (LC_ALL, "");
-    bindtextdomain ("_", getenv("PWD"));
-    textdomain ("_");
+#if defined PACKAGE && defined LOCALE_DIR  //provided at compile time
+    bindtextdomain (PACKAGE, LOCALE_DIR);
+    textdomain (PACKAGE);
+#endif
 
     int low = 1, high = 100;
     printf(_("Guess a number between %d and %d\n"), low, high);

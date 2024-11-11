@@ -1,0 +1,15 @@
+# Make locale
+$ LANG=fr make tempalte
+$ vim po/fr.po  #write translations...
+
+# Update locale
+$ LANG=fr make template-upd
+$ vim po/fr_upd.po #update translations
+$ make locales-update
+
+# Build
+$ make locales
+$ make
+
+# Launch
+$ LANG=fr ./guesser
