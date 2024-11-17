@@ -1,0 +1,26 @@
+diff --git a/09_PatchDiff/maze.c b/09_PatchDiff/maze.c
+index 59de1c7..50703fe 100644
+--- a/09_PatchDiff/maze.c
++++ b/09_PatchDiff/maze.c
+@@ -44,9 +44,21 @@ void createPath(char** maze, size_t n_rooms) {
+ }
+ 
+ int main(int argc, char *argv[]) {
++    if (argc > 2) {
++        printf("Usage: ./maze <maze n rooms (int)>\n");
++        exit(1);
++    }
++
+     srand(time(NULL));
+ 
+     size_t n_rooms = 6;
++    if (argc == 2) {
++        n_rooms = atoi(argv[1]);
++        if (n_rooms == 0) {
++            printf("ERROR: Bad argument '%s'\n", argv[1]);
++            exit(2);
++        }
++    }
+     const size_t maze_size = n_rooms * 2 + 1;
+ 
+     char **maze = (char**)malloc(sizeof(void*) * maze_size);
