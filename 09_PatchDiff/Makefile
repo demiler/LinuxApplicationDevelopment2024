@@ -1,35 +1,35 @@
 .PHONY: clean all test
-GENERATES=maze
+GENERATES=maze maze-patch1 maze-patch2 maze-patch2
 TRASH=*.o *.temp
 
 CFLAGS=-O0 -g
 
-all: maze
+all: maze maze-patch1 maze-patch2 maze-patch3
 
-patch0-src:
+maze: maze.c
 	git reset --hard HEAD
+	$(CC) $(CFLAGS) -o maze maze.c
 
-patch1-src: patch1-argv-maze-rooms.patch
+maze-patch1: patch1-argv-maze-rooms.patch maze.c
+	git reset --hard HEAD
 	git apply $<
+	$(CC) $(CFLAGS) -o maze-patch1 maze.c
 
-patch2-src: patch2-argv-maze-rooms-n-chars.patch
+maze-patch2: patch2-argv-maze-rooms-n-chars.patch maze.c
+	git reset --hard HEAD
 	git apply $<
+	$(CC) $(CFLAGS) -o maze-patch2 maze.c
 
-patch3-src: patch3-argv-maze-rooms-n-chars-n-srand.patch
+maze-patch3: patch3-argv-maze-rooms-n-chars-n-srand.patch maze.c
+	git reset --hard HEAD
 	git apply $<
+	$(CC) $(CFLAGS) -o maze-patch3 maze.c
 
-patch3: patch0-src patch3-src maze 
-	cp maze maze-patch3
-
-patch2: patch0-src patch2-src maze 
-	cp maze maze-patch2
-
-patch1: patch0-src patch1-src maze 
-	cp maze maze-patch1
-
-maze-p0: patch0-src maze
-
-maze: maze.o
+run: maze maze-patch1 maze-patch2 maze-patch3
+	./maze
+	./maze-patch1 3
+	./maze-patch2 '! ' 4
+	./maze-patch3 100 '$$ ' 5
 
 clean:
 	rm -rf $(TRASH)
