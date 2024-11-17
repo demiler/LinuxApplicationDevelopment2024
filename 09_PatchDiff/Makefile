@@ -15,6 +15,12 @@ patch1-src: patch1-argv-maze-rooms.patch
 patch2-src: patch2-argv-maze-rooms-n-chars.patch
 	git apply $<
 
+patch3-src: patch3-argv-maze-rooms-n-chars-n-srand.patch
+	git apply $<
+
+patch3: patch0-src patch3-src maze 
+	cp maze maze-patch3
+
 patch2: patch0-src patch2-src maze 
 	cp maze maze-patch2
 
