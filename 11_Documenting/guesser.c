@@ -49,8 +49,9 @@ int from_romanian(const char* const romnum) {
 
 void printhelp() {
     printf(_("Usage: guesser [-r|-h]\n"));
-    printf(_("  -r    Use romanian numbers instead of arabic\n"));
-    printf(_("  -h    Show this message\n"));
+    printf(_("Play a game with the computer where it should guess your number!\n\n"));
+    printf(_("  -r         Use romanian numbers instead of arabic\n"));
+    printf(_("  -h|--help  Show this message\n"));
 }
 
 int main(int argc, char* argv[]) {
@@ -70,7 +71,7 @@ int main(int argc, char* argv[]) {
         if (strcmp(argv[1], "-r") == 0) {
             use_romanian = 1;
         }
-        else if (strcmp(argv[1], "-h") == 0) {
+        else if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
             printhelp();
             return 0;
         }
