@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
         }
 
         if (use_romanian) {
-            printf(_("Is it %s (%d)? [l/e/g] "), to_romanian(number), number);
+            printf(_("Is it %s? [l/e/g] "), to_romanian(number));
         }
         else {
             printf(_("Is it %d? [l/e/g] "), number);
