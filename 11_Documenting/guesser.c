@@ -1,3 +1,22 @@
+//
+// Created on 2024.02.02.
+//
+
+/** @mainpage
+ * # Game with ARTIFICIAL INTELEGENT (no)
+ *
+ * Play with the ARTIFICIAL INTELEGENT that can easily guess your number (in several attempts)
+ * ((maybe))
+ *
+ * Custom MODEL, don't use any OPENAI api's so you don't need to provide it a token
+ *
+ */
+
+/** @file guesser.c
+ * Implementation of the game
+ *
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -7,6 +26,7 @@
 
 #define _(STRING) gettext(STRING)
 
+/**< Array with romanian numbers from 0 to 100 (included). (REALLY FAST IMPLEMENTATION!) **/
 const char *ROMANIAN[] = {
     "N",      "I",       "II",     "III",     "IV",       "V",      "VI",
     "VII",    "VIII",    "IX",     "X",       "XI",       "XII",    "XIII",
@@ -24,9 +44,14 @@ const char *ROMANIAN[] = {
     "XCI",    "XCII",    "XCIII",  "XCIV",    "XCV",      "XCVI",   "XCVII",
     "XCVIII", "XCIX",    "C"
 };
-// dirty hack to find length of a constant array
+/**< dirty hack to find length of a constant array **/
 const unsigned int N_ROMANIAN = sizeof(ROMANIAN) / sizeof(void*);
 
+/** Convert integer to romanian number (in string)
+  *
+  * @param num Integer that needs to be converted to romanian string
+  * @returns string Non NULL pointer to a null-terminated string if success, NULL otherwise
+  */
 const char* const to_romanian(unsigned int num) {
     if (num >= N_ROMANIAN) {
         return NULL;
@@ -34,6 +59,11 @@ const char* const to_romanian(unsigned int num) {
     return ROMANIAN[num];
 }
 
+/** Convert romanian number from string to integer
+  *
+  * @param romnum Romanian number in string that needs to be converted back to integer
+  * @returns int Postive value if conversion successfull, -2 if NULL was provided, -1 if failed
+  */
 int from_romanian(const char* const romnum) {
     if (romnum == NULL) {
         return -2;
@@ -47,6 +77,9 @@ int from_romanian(const char* const romnum) {
     return -1;
 }
 
+/** Prints help message
+  *
+  */
 void printhelp() {
     printf(_("Usage: guesser [-r|-h]\n"));
     printf(_("Play a game with the computer where it should guess your number!\n\n"));
