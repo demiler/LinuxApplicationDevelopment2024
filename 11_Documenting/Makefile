@@ -1,18 +1,18 @@
-.PHONY: clean all test template locales ru
+.PHONY: clean all test template ru locales-install
 
 LOCALE_DIR=/tmp/tmp.locales
 PACKAGE=guesser
 
 GENERATES=guesser $(LOCALE_DIR)
-TRASH=*.o *.temp *.mo locales template.pot
+TRASH=*.o *.temp *.mo locales template.pot *.man po/template.pot
 
 CFLAGS=-O0 -g -D LOCALE_DIR="\"$(LOCALE_DIR)\"" -D PACKAGE="\"$(PACKAGE)\""
 
-all: guesser
+all: guesser locales-install guesser.man
 
 guesser: guesser.o
 
-locales: ru
+locales-install: ru
 
 locales-update:
 	for i in po/*_upd.po; do old=$$(echo $$i | sed 's/_upd//'); msgmerge -U $$old $$i && rm $$i; done
@@ -32,6 +32,9 @@ template: po/template.pot
 
 template-upd: po/template.pot
 	[ "$$LANG" != "C" ] && { msginit -i po/template.pot -l $$LANG -o po/$${LANG}_upd.po; } || { echo "LANG is required!" && false; }
+
+guesser.man: guesser
+	help2man ./$< > $@
 
 clean:
 	rm -rf $(TRASH)
