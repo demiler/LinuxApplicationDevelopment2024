@@ -30,14 +30,14 @@ msgid ""
 msgstr "Сыграйте игру с компьютером, где он должен угадать ваше число!\n\n"
 
 #: guesser.c:53
-#, fuzzy, c-format
+#, , c-format
 msgid "  -r         Use romanian numbers instead of arabic\n"
-msgstr "  -r    Использовать римские цифры вместо арабских\n"
+msgstr "  -r         Использовать римские цифры вместо арабских\n"
 
 #: guesser.c:54
-#, fuzzy, c-format
+#, , c-format
 msgid "  -h|--help  Show this message\n"
-msgstr "  -h|--help    Показать это сообщение\n"
+msgstr "  -h|--help  Показать это сообщение\n"
 
 #: guesser.c:66
 #, c-format
@@ -54,7 +54,7 @@ msgid "Error: unknown argument '%s'\n"
 msgstr "Ошибка: неизвестный аргумент '%s'\n"
 
 #: guesser.c:86
-#, fuzzy, c-format
+#, , c-format
 msgid "Guess a number between %s and %s\n"
 msgstr "Загадайте число между %s и %s\n"
 
@@ -69,7 +69,7 @@ msgid "...press any to continue...\n"
 msgstr "...нажмите любую клаваишу, что продолжить\n"
 
 #: guesser.c:102
-#, fuzzy, c-format
+#, , c-format
 msgid ""
 "You are lying, it has to be %s!\n"
 "I'm not playing w/ you >:(\n"
@@ -87,7 +87,7 @@ msgstr ""
 "Я не играю с вами >:(\n"
 
 #: guesser.c:113
-#, fuzzy, c-format
+#, , c-format
 msgid "Is it %s? [l/e/g] "
 msgstr "Это %s? [l/e/g] "
 
@@ -97,7 +97,7 @@ msgid "Is it %d? [l/e/g] "
 msgstr "Это %d? [l/e/g] "
 
 #: guesser.c:136
-#, fuzzy, c-format
+#, , c-format
 msgid "I knew it was %s!\n"
 msgstr "Я знал, что это %s!\n"
 
