@@ -8,7 +8,7 @@ TRASH=*.o *.temp *.mo locales template.pot *.man po/template.pot docs
 
 CFLAGS=-O0 -g -D LOCALE_DIR="\"$(LOCALE_DIR)\"" -D PACKAGE="\"$(PACKAGE)\""
 
-all: guesser locales-install guesser.man
+all: guesser locales-install guesser.man docs
 
 guesser: guesser.o
 
