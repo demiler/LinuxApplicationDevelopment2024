@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-01 20:54+0300\n"
+"POT-Creation-Date: 2024-12-02 22:49+0300\n"
 "PO-Revision-Date: 2024-11-10 23:11+0300\n"
 "Last-Translator: The other dude <otherdude@validemal.com>\n"
 "Language-Team: Russian <LL@li.org>\n"
@@ -17,29 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: guesser.c:51
+#: guesser.c:86
 #, c-format
 msgid "Usage: guesser [-r|-h]\n"
 msgstr "Использование: guesser [-r|-h]\n"
 
-#: guesser.c:52
+#: guesser.c:87
 #, c-format
 msgid ""
 "Play a game with the computer where it should guess your number!\n"
 "\n"
-msgstr "Сыграйте игру с компьютером, где он должен угадать ваше число!\n\n"
+msgstr ""
+"Сыграйте игру с компьютером, где он должен угадать ваше число!\n"
+"\n"
 
-#: guesser.c:53
-#, , c-format
+#: guesser.c:88
+#, c-format
 msgid "  -r         Use romanian numbers instead of arabic\n"
 msgstr "  -r         Использовать римские цифры вместо арабских\n"
 
-#: guesser.c:54
-#, , c-format
+#: guesser.c:89
+#, c-format
 msgid "  -h|--help  Show this message\n"
 msgstr "  -h|--help  Показать это сообщение\n"
 
-#: guesser.c:66
+#: guesser.c:90
+#, c-format
+msgid "  --version  Show current version\n"
+msgstr "  --version  Показать текущую версию\n"
+
+#: guesser.c:102
 #, c-format
 msgid ""
 "Error: too many arguments\n"
@@ -48,28 +55,33 @@ msgstr ""
 "Ошибка: слишком много аргументов\n"
 "\n"
 
-#: guesser.c:79
+#: guesser.c:111
+#, c-format
+msgid "Guesser game version: %s\n"
+msgstr "Guesser версия игры: %s\n"
+
+#: guesser.c:119
 #, c-format
 msgid "Error: unknown argument '%s'\n"
 msgstr "Ошибка: неизвестный аргумент '%s'\n"
 
-#: guesser.c:86
-#, , c-format
+#: guesser.c:126
+#, c-format
 msgid "Guess a number between %s and %s\n"
 msgstr "Загадайте число между %s и %s\n"
 
-#: guesser.c:89
+#: guesser.c:129
 #, c-format
 msgid "Guess a number between %d and %d\n"
 msgstr "Загадайте число между %d и %d\n"
 
-#: guesser.c:91
+#: guesser.c:131
 #, c-format
 msgid "...press any to continue...\n"
 msgstr "...нажмите любую клаваишу, что продолжить\n"
 
-#: guesser.c:102
-#, , c-format
+#: guesser.c:142
+#, c-format
 msgid ""
 "You are lying, it has to be %s!\n"
 "I'm not playing w/ you >:(\n"
@@ -77,7 +89,7 @@ msgstr ""
 "Вы врете, это должно быть %s!\n"
 "Я не играю с вами >:(\n"
 
-#: guesser.c:107
+#: guesser.c:147
 #, c-format
 msgid ""
 "You are lying, it has to be %d!\n"
@@ -86,22 +98,22 @@ msgstr ""
 "Вы врете, это должно быть %d!\n"
 "Я не играю с вами >:(\n"
 
-#: guesser.c:113
-#, , c-format
+#: guesser.c:153
+#, c-format
 msgid "Is it %s? [l/e/g] "
 msgstr "Это %s? [l/e/g] "
 
-#: guesser.c:116
+#: guesser.c:156
 #, c-format
 msgid "Is it %d? [l/e/g] "
 msgstr "Это %d? [l/e/g] "
 
-#: guesser.c:136
-#, , c-format
+#: guesser.c:176
+#, c-format
 msgid "I knew it was %s!\n"
 msgstr "Я знал, что это %s!\n"
 
-#: guesser.c:139
+#: guesser.c:179
 #, c-format
 msgid "I knew it was %d!\n"
 msgstr "Я знал, что это %d!\n"

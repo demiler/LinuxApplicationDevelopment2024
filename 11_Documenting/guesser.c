@@ -24,6 +24,8 @@
 #include <libintl.h>
 #include <locale.h>
 
+#define GUESSER_VERSION "1.0.0"
+
 #define _(STRING) gettext(STRING)
 
 /**< Array with romanian numbers from 0 to 100 (included). (REALLY FAST IMPLEMENTATION!) **/
@@ -85,6 +87,7 @@ void printhelp() {
     printf(_("Play a game with the computer where it should guess your number!\n\n"));
     printf(_("  -r         Use romanian numbers instead of arabic\n"));
     printf(_("  -h|--help  Show this message\n"));
+    printf(_("  --version  Show current version\n"));
 }
 
 int main(int argc, char* argv[]) {
@@ -103,6 +106,10 @@ int main(int argc, char* argv[]) {
     if (argc == 2) {
         if (strcmp(argv[1], "-r") == 0) {
             use_romanian = 1;
+        }
+        else if (strcmp(argv[1], "--version") == 0) {
+            printf(_("Guesser game version: %s\n"), GUESSER_VERSION);
+            return 0;
         }
         else if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
             printhelp();
