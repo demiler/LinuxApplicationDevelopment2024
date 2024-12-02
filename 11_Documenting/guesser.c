@@ -28,7 +28,6 @@
 
 #define _(STRING) gettext(STRING)
 
-/**< Array with romanian numbers from 0 to 100 (included). (REALLY FAST IMPLEMENTATION!) **/
 const char *ROMANIAN[] = {
     "N",      "I",       "II",     "III",     "IV",       "V",      "VI",
     "VII",    "VIII",    "IX",     "X",       "XI",       "XII",    "XIII",
@@ -46,8 +45,10 @@ const char *ROMANIAN[] = {
     "XCI",    "XCII",    "XCIII",  "XCIV",    "XCV",      "XCVI",   "XCVII",
     "XCVIII", "XCIX",    "C"
 };
-/**< dirty hack to find length of a constant array **/
+/**< Array with romanian numbers from 0 to 100 (included). (REALLY FAST IMPLEMENTATION!) **/
+
 const unsigned int N_ROMANIAN = sizeof(ROMANIAN) / sizeof(void*);
+/**< dirty hack to find length of a constant array **/
 
 /** Convert integer to romanian number (in string)
   *
