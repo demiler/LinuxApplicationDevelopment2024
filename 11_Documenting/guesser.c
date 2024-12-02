@@ -10,6 +10,8 @@
  *
  * Custom MODEL, don't use any OPENAI api's so you don't need to provide it a token
  *
+ * Just look at this amazing help:
+ * \include{doc} help-temp.dox
  */
 
 /** @file guesser.c

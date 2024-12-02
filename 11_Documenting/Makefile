@@ -4,7 +4,7 @@ LOCALE_DIR=/tmp/tmp.locales
 PACKAGE=guesser
 
 GENERATES=guesser $(LOCALE_DIR)
-TRASH=*.o *.temp *.mo locales template.pot *.man po/template.pot docs
+TRASH=*.o *.temp *.mo locales template.pot *.man po/template.pot docs *-temp.dox
 
 CFLAGS=-O0 -g -D LOCALE_DIR="\"$(LOCALE_DIR)\"" -D PACKAGE="\"$(PACKAGE)\""
 
@@ -36,11 +36,16 @@ template-upd: po/template.pot
 guesser.man: guesser
 	help2man ./$< > $@
 
-docs: Doxyfile.in
+docs: Doxyfile.in help-temp.dox
 	doxygen $<
 
 docs-serve: docs
 	python3 -m http.server 8080 --bind 127.0.0.1 --directory docs/html
+
+help-temp.dox: guesser
+	echo '```' > $@
+	./guesser --help >> $@
+	echo '```' >> $@
 
 clean:
 	rm -rf $(TRASH)
