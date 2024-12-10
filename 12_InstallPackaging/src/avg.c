@@ -40,6 +40,12 @@ void help() {
 }
 
 int main(int argc, char *argv[]) {
+    setlocale (LC_ALL, "");
+#if defined PACKAGE && defined LOCALE_DIR  //provided at compile time
+    bindtextdomain (PACKAGE, LOCALE_DIR);
+    textdomain (PACKAGE);
+#endif
+
     int use_mul = 0;
     for (int i = 1; i < argc; ++i) {
         if (strcmp(argv[i], "-m") == 0) {
