@@ -11,9 +11,10 @@ AC_CONFIG_SRCDIR([src/avg.c])
 AC_CONFIG_HEADERS([config.h])
 
 AC_PROG_CC
+AC_PROG_INTLTOOL
 
 AC_CHECK_HEADERS([libintl.h locale.h stdlib.h])
 AC_CHECK_FUNCS([realpath setlocale])
 
-AC_CONFIG_FILES([ Makefile, src/Makefile.am, po/Makefile.in ])
+AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in])
 AC_OUTPUT

@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include <libgen.h>
 #include <libintl.h>
 #include <locale.h>
+
+#include "config.h"
 
 #define MAX_NUMBERS 255
 
@@ -41,10 +42,8 @@ void help() {
 
 int main(int argc, char *argv[]) {
     setlocale (LC_ALL, "");
-#if defined PACKAGE && defined LOCALE_DIR  //provided at compile time
     bindtextdomain (PACKAGE, LOCALE_DIR);
     textdomain (PACKAGE);
-#endif
 
     int use_mul = 0;
     for (int i = 1; i < argc; ++i) {
