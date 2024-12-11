@@ -15,3 +15,6 @@ help-temp.dox: ./src/avg
 
 docs-serve: doxygen-doc
 	python3 -m http.server --directory $</html
+
+deep-clean:
+	git clean -df
