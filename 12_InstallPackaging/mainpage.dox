@@ -1,0 +1,7 @@
+/*! \mainpage The avg program
+ * Amazing program that let's you calculate average of
+ * sum AND MUL with breze!
+ *
+ * Just look at this amazing help:
+ * \include{doc} help-temp.dox
+ */
