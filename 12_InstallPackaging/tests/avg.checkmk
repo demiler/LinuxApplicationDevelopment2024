@@ -1,0 +1,18 @@
+#include <check.h>
+#include "calc.h"
+
+#test sum1
+  int n[] = { 1, 2, 3, 4, 5 };
+  ck_assert_int_eq(average_sum(5, n), 3);
+
+#test sum2
+  int n[] = { 5, 3, 4, 1, 2 };
+  ck_assert_int_eq(average_sum(5, n), 3);
+
+#test mul1
+  int n[] = { 1, 2, 3, 4, 5 };
+  ck_assert_int_eq(average_mul(5, n), 24);
+
+#test mul2
+  int n[] = { 5, 3, 4, 1, 2 };
+  ck_assert_int_eq(average_mul(5, n), 24);

@@ -1,3 +1,4 @@
+AC_PREREQ([2.72])
 AC_INIT([avg], [1.0.0], [bug-automake@gnu.org])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 
@@ -13,8 +14,10 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CC
 AC_PROG_INTLTOOL
 
+PKG_CHECK_MODULES([CHECK],[check])
+
 AC_CHECK_HEADERS([libintl.h locale.h stdlib.h])
 AC_CHECK_FUNCS([realpath setlocale])
 
-AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in])
+AC_CONFIG_FILES([Makefile src/Makefile po/Makefile.in tests/Makefile])
 AC_OUTPUT
