@@ -8,9 +8,13 @@
 #include "../config.h"
 
 #define MAX_NUMBERS 255
+/**< Defines max memory usage for the program. Very memory safe! **/
 
 #define _(STRING) gettext(STRING)
 
+/** Prints help message
+  *
+  */
 void help() {
     printf(_("Usage: avg [<options>]\n"));
     printf(_("  Calculates average of your input. Very usefull!\n"));
