@@ -3,32 +3,13 @@
 #include <libgen.h>
 #include <libintl.h>
 #include <locale.h>
+#include "calc.h"
 
-#include "config.h"
+#include "../config.h"
 
 #define MAX_NUMBERS 255
 
-#define AVG_APP_VERSION "1.0.0"
 #define _(STRING) gettext(STRING)
-
-long long int average_sum(int n, int *numbers) {
-    long long int avg = 0;
-    for (int i = 0; i < n; ++i) {
-        avg += numbers[i];
-    }
-    avg /= n;
-    return avg;
-}
-
-long long int average_mul(int n, int *numbers) {
-    long long int avg = 1;
-    for (int i = 0; i < n; ++i) {
-        if (numbers[i] == 0) return 0;
-        avg *= numbers[i];
-    }
-    avg /= n;
-    return avg;
-}
 
 void help() {
     printf(_("Usage: avg [<options>]\n"));
@@ -55,7 +36,7 @@ int main(int argc, char *argv[]) {
             return 0;
         }
         else if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
-            printf(_("Version: %s\n"), AVG_APP_VERSION);
+            printf(_("Version: %s\n"), VERSION);
             return 0;
         }
     }
