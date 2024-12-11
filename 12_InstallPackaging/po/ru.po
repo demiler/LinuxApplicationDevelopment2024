@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sem 11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-10 21:59+0300\n"
+"POT-Creation-Date: 2024-12-11 13:06+0300\n"
 "PO-Revision-Date: 2024-12-10 19:28+0300\n"
 "Last-Translator: demiler <demiler@seamoth>\n"
 "Language-Team: Russian <gnu@d07.ru>\n"
@@ -18,62 +18,62 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../src/avg.c:34
+#: ../src/avg.c:15
 #, c-format
 msgid "Usage: avg [<options>]\n"
 msgstr "Использование: avg [<опции>]\n"
 
-#: ../src/avg.c:35
+#: ../src/avg.c:16
 #, c-format
 msgid "  Calculates average of your input. Very usefull!\n"
 msgstr "  Считает среднее вашего ввода. Очень удобно!\n"
 
-#: ../src/avg.c:37
+#: ../src/avg.c:18
 #, c-format
 msgid "Options:\n"
 msgstr "Опции:\n"
 
-#: ../src/avg.c:38
+#: ../src/avg.c:19
 #, c-format
 msgid "  -m                Output multiplication average instead\n"
 msgstr "  -m                Выводить среднее умножения\n"
 
-#: ../src/avg.c:39
+#: ../src/avg.c:20
 #, c-format
 msgid "  -h, --help        Show this message\n"
 msgstr "  -h, --help         Вывести это сообщение\n"
 
-#: ../src/avg.c:40
+#: ../src/avg.c:21
 #, c-format
 msgid "  -v, --version     Show programm version\n"
 msgstr "  -v, --version      Показать версию программы\n"
 
-#: ../src/avg.c:58
+#: ../src/avg.c:39
 #, c-format
 msgid "Version: %s\n"
 msgstr "Версия: %s\n"
 
-#: ../src/avg.c:63
+#: ../src/avg.c:44
 #, c-format
 msgid "Enter amount of numbers you wan't to enter: "
 msgstr "Введите количество чисел, которые вы хотите ввести: "
 
-#: ../src/avg.c:68
+#: ../src/avg.c:49
 #, c-format
 msgid "Error: too many numbers, I don't have enough memory for this\n"
 msgstr "Ошибка: сликшом много чисел, у меня нет столько памяти\n"
 
-#: ../src/avg.c:73
+#: ../src/avg.c:54
 #, c-format
 msgid "Enter numbers themselfs:\n"
 msgstr "Введите сами числа\n"
 
-#: ../src/avg.c:79
+#: ../src/avg.c:60
 #, fuzzy, c-format
 msgid "Here is your average mul: %lld\n"
 msgstr "Вот ваше среднее произведение: %lld\n"
 
-#: ../src/avg.c:82
+#: ../src/avg.c:63
 #, c-format
 msgid "Here is your average sum: %lld\n"
 msgstr "Вот ваша средняя сумма: %lld\n"
