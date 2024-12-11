@@ -4,9 +4,9 @@ SUBDIRS = src po tests
 
 all-local: help-temp.dox doxygen-doc
 
-doxygen-doc/man/man1/avg.1: doxygen-doc
+doxygen-doc/man/man1/avg.c.1: doxygen-doc
 
-man1_MANS = doxygen-doc/man/man1/avg.1
+man1_MANS = doxygen-doc/man/man1/avg.c.1
 
 help-temp.dox: ./src/avg
 	echo '```' > $@
